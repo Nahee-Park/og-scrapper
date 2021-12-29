@@ -6,7 +6,7 @@ router.get('/list', require('./contentListGET'));
 router.post('/', require('./contentPOST'));
 router.put('/restore', require('./contentRestorePUT'));
 
-router.put('/delete/temp', require('./contentSoftDELETE'));
-router.delete('/delete/forever', require('./contentHardDELETE'));
+router.put('/delete/soft', require('./contentSoftDELETE'));
+router.delete('/delete/hard/:id', require('./contentHardDELETE'));
 
 module.exports = router;
