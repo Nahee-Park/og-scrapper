@@ -9,7 +9,7 @@ interface ButtonStyleProps {
 }
 interface ButtonProps extends ButtonStyleProps {
   label: string;
-  onClick: () => void;
+  onClick: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 function Button({ label, color, size, onClick }: ButtonProps) {

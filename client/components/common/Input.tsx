@@ -8,7 +8,7 @@ interface InputProps extends InputStyleProps {
   type: string;
   name: string;
   setValue: Dispatch<SetStateAction<string | undefined>>;
-  submitHandler: () => void;
+  submitHandler: (e: React.FormEvent<HTMLFormElement>) => void;
   value: string | undefined;
 }
 
@@ -21,7 +21,15 @@ const Input = ({ type, name, height, width, setValue, submitHandler, value }: In
 
   return (
     <Styled.Form onSubmit={submitHandler} height={height} width={width}>
-      <input className="input" type={type} name={name} onChange={changeHandler} ref={inputRef} value={value} placeholder='아카이빙 하고 싶은 url주소를 입력해주세요!'/>
+      <input
+        className="input"
+        type={type}
+        name={name}
+        onChange={changeHandler}
+        ref={inputRef}
+        value={value}
+        placeholder="아카이빙 하고 싶은 url주소를 입력해주세요!"
+      />
     </Styled.Form>
   );
 };

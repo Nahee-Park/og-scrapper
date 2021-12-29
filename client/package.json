@@ -25,6 +25,7 @@
     "reset-css": "^5.0.1",
     "stylelint": "^14.1.0",
     "stylelint-config-concentric-order": "^5.0.0",
+    "swr": "^1.1.2",
     "webpack": "^5.65.0"
   },
   "devDependencies": {

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <img src="https://user-images.githubusercontent.com/81923229/147679923-499b556c-7b5c-44bd-add4-58ed731b8397.png" width="100%" height="200px"/> */}
-      <Header/>
+      <Header />
       <div className="SearchvarWrapper">
         <SearchBar />
       </div>
@@ -36,6 +36,12 @@ const Styled = {
     justify-contents: center;
     align-items: center;
     .SearchvarWrapper {
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .ResultWrapper {
       width: 80%;
     }
   `,

@@ -2,15 +2,23 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Button from '../common/Button';
 import Input from '../common/Input';
+import { baseUrl, client } from '../../lib/client';
+import { mutate } from 'swr';
 
 function SearchBar() {
   const [searchValue, setSearchValue] = useState<string | undefined>('');
 
-  const clickHandler = () => {
+  const clickHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (searchValue) {
-      console.log('searchValue',searchValue);
-      // searchValue 가지고 Post하기 
-      // post한 url og테그 크롤링 해서 
+      console.log('searchValue', searchValue);
+      await client
+        .post('', {
+          url: searchValue,
+        })
+        .then((response) => console.log('response', response))
+        .catch((error) => console.log('error', error));
+      mutate('/list');
       setSearchValue('');
     }
   };
@@ -41,10 +49,14 @@ const Styled = {
   SearchBar: styled.div`
     display: flex;
     margin-top: 1rem;
+    /* margin-left: 1.5rem; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   `,
   Input: styled.div`
     margin-right: 0.5rem;
-    width:80%;
+    width: 90%;
   `,
   Button: styled.div``,
 };
