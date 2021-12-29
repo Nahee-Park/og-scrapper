@@ -17,25 +17,25 @@ const getAllContent = async (client) => {
 const getDeletedContent = async (client) => {
   const { rows } = await client.query(
     `
-          SELECT *
-          FROM content c
-          WHERE c.is_deleted = TRUE
-      `,
+        SELECT *
+        FROM content c
+        WHERE c.is_deleted = TRUE
+    `,
   );
   return convertSnakeToCamel.keysToCamel(rows);
 };
 
 // 컨텐츠 저장
-const postContent = async (client, postImg, postTitle, postDescription) => {
+const postContent = async (client, postImg, postTitle, postDescription, url) => {
   const { rows } = await client.query(
     `
-          INSERT INTO content
-          (image_url, title, description)
-          VALUES
-          ($1, $2, $3)
-          RETURNING post_img, post_title
-          `,
-    [postImg, postTitle, postDescription],
+        INSERT INTO content
+        (image_url, title, description, url)
+        VALUES
+        ($1, $2, $3, $4)
+        RETURNING image_url, title, description, url
+    `,
+    [postImg, postTitle, postDescription, url],
   );
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };

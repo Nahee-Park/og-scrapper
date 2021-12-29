@@ -29,7 +29,7 @@ module.exports = {
   READ_ALL_POSTS_SUCCESS: '모든 포스트 조회 성공',
   UPDATE_ONE_POST_SUCCESS: '포스트 수정 성공',
   DELETE_ONE_POST_SUCCESS: '포스트 삭제 성공',
-  NO_POST: '존재하지 않는 포스트입니다.',
+  NO_POST: 'og테그가 존재하지 않는 포스트입니다.',
 
   // 서버 내 오류
   INTERNAL_SERVER_ERROR: '서버 내 오류',
