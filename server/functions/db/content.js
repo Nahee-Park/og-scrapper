@@ -41,7 +41,7 @@ const postContent = async (client, postImg, postTitle, postDescription, url) => 
 };
 
 // 컨텐츠 soft 삭제
-const deleteContent = async (client, id) => {
+const softDeleteContent = async (client, id) => {
   const { rows } = await client.query(
     `
         UPDATE content
@@ -82,4 +82,4 @@ const hardDeleteContent = async (client, id) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-module.exports = { getAllContent, getDeletedContent, postContent, deleteContent, restoreContent, hardDeleteContent };
+module.exports = { getAllContent, getDeletedContent, postContent, softDeleteContent, restoreContent, hardDeleteContent };

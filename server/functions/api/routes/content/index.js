@@ -4,9 +4,9 @@ const router = express.Router();
 router.get('/list', require('./contentListGET'));
 
 router.post('/', require('./contentPOST'));
-router.put('/', require('./contentRestorePUT'));
+router.put('/restore', require('./contentRestorePUT'));
 
-router.put('/', require('./contentSoftDELETE'));
-router.delete('/:id', require('./contentHardDELETE'));
+router.put('/delete/temp', require('./contentSoftDELETE'));
+router.delete('/delete/forever', require('./contentHardDELETE'));
 
 module.exports = router;
