@@ -18,9 +18,18 @@ module.exports = async (req, res) => {
     ogs(options, async (error, response) => {
       if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
       const { ogTitle, ogDescription, ogImage } = response;
-      const postImg = ogImage.url;
-      const postTitle = ogTitle;
-      const postDescription = ogDescription;
+      let postImg = ogImage?.url;
+      if(!postImg) {
+        postImg = "https://firebasestorage.googleapis.com/v0/b/socar-server-814e9.appspot.com/o/car%2Fhavitlogobig.png?alt=media&token=da294b1c-8bba-49fa-aaa1-5b944b573fc6"
+      }
+      let postTitle = ogTitle;
+      if (!postTitle) {
+        postTitle = '해빗 사랑해 !';
+      }
+      let postDescription = ogDescription;
+      if(!postDescription){
+        postDescription = '비록 og테그의 description이 없는 슬픈 상황이지만 해빗 사랑해!'
+      }
       const postContent = await contentDB.postContent(client, postImg, postTitle, postDescription, url);
       if (!postContent) return res.status(statusCode.NOT_FOUND).send(util.fail(statusCode.NOT_FOUND, responseMessage.NO_POST));
       res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.ADD_ONE_POST_SUCCESS, postContent));

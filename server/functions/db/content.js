@@ -33,7 +33,7 @@ const postContent = async (client, postImg, postTitle, postDescription, url) => 
         (image_url, title, description, url)
         VALUES
         ($1, $2, $3, $4)
-        RETURNING image_url, title, description, url
+        RETURNING id, image_url, title, description, url
     `,
     [postImg, postTitle, postDescription, url],
   );
