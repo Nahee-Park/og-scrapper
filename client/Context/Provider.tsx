@@ -1,31 +1,32 @@
-import React, { useState, Dispatch } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import { contentsInterface } from '../components/Home/CardView';
 
-// emoji 데이터에 대한 타입 지정
-interface emojiArrayType {
-  imgUrl: string;
-  rawText: string;
-}
-interface emojiDataProperties {
-  emoji: Array<emojiArrayType>;
-  keyword: string;
-}
-
-export interface emojiContextInterface {
-  emojiData: emojiDataProperties[];
-  setEmojiData: (emojiData: emojiDataProperties[]) => void;
+export interface contentsContextInterface {
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean | undefined>>;
+  isError: boolean;
+  setIsError: Dispatch<SetStateAction<boolean | undefined>>;
+  setContentsData: Dispatch<SetStateAction<contentsInterface[] | undefined>>;
+  contentsData: contentsInterface[];
 }
 
-export const EmojiContext = React.createContext<emojiContextInterface | null>(null);
+export const ContentsContext = React.createContext<contentsContextInterface | null>(null);
 
-function EmojiProvider({ children }: HTMLElement) {
-  const [emojiData, setEmojiData] = useState<emojiDataProperties[]>([]);
+function ContentsProvider({ children }: HTMLElement) {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [contentsData, setContentsData] = useState<contentsInterface[]>();
 
   const providerValues = {
-    emojiData,
-    setEmojiData,
-  };
+    isLoading,
+    setIsLoading,
+    isError,
+    setIsError,
+    contentsData,
+    setContentsData,
+  } as contentsContextInterface;
 
-  return <EmojiContext.Provider value={providerValues}>{children}</EmojiContext.Provider>;
+  return <ContentsContext.Provider value={providerValues}>{children}</ContentsContext.Provider>;
 }
 
-export default EmojiProvider;
+export default ContentsProvider;

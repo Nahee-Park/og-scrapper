@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { client } from '../../lib/client';
 import styled from '@emotion/styled';
 import useSWR from 'swr';
 import CardItem from './CardItem';
+import useContentsDatas from '../../hooks/useContentsDatas';
 
 export interface contentsInterface {
   id: number;
@@ -13,28 +14,25 @@ export interface contentsInterface {
 }
 
 function CardView() {
-  const getData = () => {
-    const { data, error } = useSWR<{ data: { data: { contents: contentsInterface[] } } }>(
-      '/list',
-      client.get,
-    );
-    return {
-      data: data,
-      isLoading: !error && !data,
-      isError: error,
-    };
-  };
-  const { data, isLoading, isError } = getData();
+  const { contentsData, setContentsData, setIsLoading } = useContentsDatas();
+
+  const { data, error } = useSWR<{ data: { data: { contents: contentsInterface[] } } }>(
+    '/list',
+    client.get,
+  );
+  useEffect(() => {
+    setContentsData(data?.data?.data?.contents);
+  }, [data]);
 
   return (
     <>
-      {data?.data?.data?.contents.length === 0 ? (
+      {contentsData?.length === 0 ? (
         <Styled.EmptyCard>
           <div className="message">공유하고 싶은 컨텐츠 링크를 입력해주세요!</div>
         </Styled.EmptyCard>
       ) : (
         <Styled.Card>
-          {data?.data?.data?.contents?.map((item, idx) => {
+          {contentsData?.map((item, idx) => {
             return <CardItem contentItem={item} id={idx} />;
           })}
         </Styled.Card>

@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from '@emotion/styled';
 import { mutate } from 'swr';
 import { contentsInterface } from './CardView';
 import { client } from '../../lib/client';
+import useContentsDatas from '../../hooks/useContentsDatas';
 
 interface contentItemInterface {
   contentItem: contentsInterface;
   id: number;
+  //   setContentsData: Dispatch<SetStateAction<contentsInterface[] | undefined>>;
+  //   contentsData: contentsInterface[];
 }
 function CardItem({ contentItem, id }: contentItemInterface) {
+  const { contentsData, setContentsData } = useContentsDatas();
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const target = e.currentTarget;
+    const copyData = [...contentsData];
+    copyData.splice(id, 1);
+    setContentsData(copyData);
     await client
       .delete(`/delete/hard/${Number(target.id)}`)
       .then((response) => console.log('response', response))
-      .catch((error) => console.log('error', error));
+      .catch((error) => {
+        console.log('error', error);
+      });
 
     mutate('/list');
   };

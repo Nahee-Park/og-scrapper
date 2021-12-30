@@ -4,20 +4,36 @@ import Button from '../common/Button';
 import Input from '../common/Input';
 import { baseUrl, client } from '../../lib/client';
 import { mutate } from 'swr';
+import useContentsDatas from '../../hooks/useContentsDatas';
 
+// 콘텐스트 api로 상태관맇기
 function SearchBar() {
   const [searchValue, setSearchValue] = useState<string | undefined>('');
+  const { contentsData, setContentsData, setIsLoading } = useContentsDatas();
 
   const clickHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchValue) {
       console.log('searchValue', searchValue);
+      setIsLoading(true);
       await client
         .post('', {
           url: searchValue,
         })
-        .then((response) => console.log('response', response))
-        .catch((error) => console.log('error', error));
+        .then((response) => {
+          console.log('response', response?.data?.data);
+          const copyData = [...contentsData];
+          console.log('copyData1', copyData);
+          copyData.push(response?.data?.data);
+          console.log('copyData', copyData);
+          setContentsData([...copyData]);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          alert(`에러가 났어요ㅠ ${error}`);
+          console.log('error', error);
+        });
       mutate('/list');
       setSearchValue('');
     }

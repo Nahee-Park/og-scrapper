@@ -1,12 +1,12 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import EmojiProvider from '../Context/Provider';
+import ContentsProvider from '../Context/Provider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <EmojiProvider>
+    <ContentsProvider>
       <Component {...pageProps} />
-    </EmojiProvider>
+    </ContentsProvider>
   );
 }
 
