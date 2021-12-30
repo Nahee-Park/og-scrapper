@@ -27,7 +27,10 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:url" content="https://havit-archive.vercel.app/" />
         <meta property="og:site_name" content="HAVIT's Content Storage" />
         <meta property="og:description" content="해빗도리들의 컨텐츠 저장소" />
-        <meta property="og:image" content="../assets/havitlogobig.png" />
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/81923229/147764431-4ca0fcc4-fb58-4554-88ca-b233ca8bdd80.png"
+        />
         <meta
           property="og:image:secure_url"
           content="https://firebasestorage.googleapis.com/v0/b/socar-server-814e9.appspot.com/o/car%2Fhavitog.png?alt=media"
