@@ -21,7 +21,8 @@ module.exports = async (req, res) => {
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.SAME_POST));
       }
     })
-    ogs(options, async (error, response) => {
+    ogs(options, async (error, response, result) => {
+      console.log(">>>>>>result",result)
       if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
       const { ogTitle, ogDescription, ogImage } = response;
       let postImg = ogImage?.url;
