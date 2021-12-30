@@ -7,9 +7,9 @@ import styled from '@emotion/styled';
 
 function Result() {
   const { isLoading, contentsData, setIsLoading } = useContentsDatas();
-  React.useEffect(() => {
-    console.log('isLoading', isLoading);
-  }, [isLoading]);
+  // React.useEffect(() => {
+  //   console.log('isLoading', isLoading);
+  // }, [isLoading]);
 
   React.useEffect(() => {
     setIsLoading(false);

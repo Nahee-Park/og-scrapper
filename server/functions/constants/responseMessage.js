@@ -31,6 +31,7 @@ module.exports = {
   DELETE_ONE_POST_SUCCESS: '포스트 삭제 성공',
   RESTORE_ONE_POST_SUCCESS: '포스트 복구 성공',
   NO_POST: 'og테그가 존재하지 않는 포스트입니다.',
+  SAME_POST: '이미 저장된 컨텐츠입니다.',
 
   // 서버 내 오류
   INTERNAL_SERVER_ERROR: '서버 내 오류',

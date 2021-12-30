@@ -15,6 +15,12 @@ module.exports = async (req, res) => {
   const options = { url: url };
   try {
     client = await db.connect(req);
+    const contents = await contentDB.getAllContent(client);
+    contents?.map((item,idx)=>{
+      if(item.url === url) {
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.SAME_POST));
+      }
+    })
     ogs(options, async (error, response) => {
       if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
       const { ogTitle, ogDescription, ogImage } = response;

@@ -21,18 +21,19 @@ function SearchBar() {
           url: searchValue,
         })
         .then((response) => {
-          console.log('response', response?.data?.data);
+          // console.log('>>>>>>>', response);
+          // console.log('response', response?.data?.data);
           const copyData = [...contentsData];
-          console.log('copyData1', copyData);
+          // console.log('copyData1', copyData);
           copyData.push(response?.data?.data);
-          console.log('copyData', copyData);
+          // console.log('copyData', copyData);
           setContentsData([...copyData]);
           setIsLoading(false);
         })
         .catch((error) => {
           setIsLoading(false);
           alert(`에러가 났어요ㅠ ${error}`);
-          console.log('error', error);
+          // console.log('error', error.message);
         });
       mutate('/list');
       setSearchValue('');

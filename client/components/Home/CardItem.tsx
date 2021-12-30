@@ -23,6 +23,7 @@ function CardItem({ contentItem, id }: contentItemInterface) {
       .then((response) => console.log('response', response))
       .catch((error) => {
         console.log('error', error);
+        alert(`에러가 났어요ㅠ ${error}`);
       });
 
     mutate('/list');
