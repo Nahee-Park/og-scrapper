@@ -29,12 +29,18 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:description" content="해빗도리들의 컨텐츠 저장소" />
         <meta
           property="og:image"
-          content="https://user-images.githubusercontent.com/81923229/147764431-4ca0fcc4-fb58-4554-88ca-b233ca8bdd80.png"
+          content="https://firebasestorage.googleapis.com/v0/b/socar-server-814e9.appspot.com/o/car%2Fhavitog.png?alt=media"
         />
         <meta
           property="og:image:secure_url"
           content="https://firebasestorage.googleapis.com/v0/b/socar-server-814e9.appspot.com/o/car%2Fhavitog.png?alt=media"
         />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="627" />
+        <meta
+          name="twitter:image"
+          content="https://firebasestorage.googleapis.com/v0/b/socar-server-814e9.appspot.com/o/car%2Fhavitog.png?alt=media"
+        ></meta>
         {/* <img
       src="https://user-images.githubusercontent.com/81923229/147679923-499b556c-7b5c-44bd-add4-58ed731b8397.png"
       width="100%"
