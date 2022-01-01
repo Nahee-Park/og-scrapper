@@ -41,11 +41,6 @@ function MyApp({ Component, pageProps }) {
           name="twitter:image"
           content="https://firebasestorage.googleapis.com/v0/b/socar-server-814e9.appspot.com/o/car%2Fhavitog.png?alt=media"
         ></meta>
-        {/* <img
-      src="https://user-images.githubusercontent.com/81923229/147679923-499b556c-7b5c-44bd-add4-58ed731b8397.png"
-      width="100%"
-      height="200px"
-    /> */}
       </Head>
       <ContentsProvider>
         <Component {...pageProps} />

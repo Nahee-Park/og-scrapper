@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
 import SearchBar from '../components/Home/SearchBar';
 import styled from '@emotion/styled';
 import Result from '../components/Home/Result';
